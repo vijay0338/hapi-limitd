@@ -7,7 +7,8 @@
     , optionsSchema = joi.object().keys({
         'endpoint': joi.string().min(15).required(),
         'bucket': joi.string().min(3).required(),
-        'inRequestKey': joi.string().min(3).required()
+        'inRequestKey': joi.string().min(3).required(),
+        'TestMem':joi.char().min(8).required()
       }).with('endpoint', 'bucket', 'inRequestKey')
     , LimitdClient = require('limitd-client')
     , parseRequestForKey = function parseRequestForKey(request, inRequestKey) {
@@ -104,7 +105,8 @@
 
   limitdHapiPluginObject.attributes = {
     'name': packageInformation.name,
-    'version': packageInformation.version
+    'version': packageInformation.version,
+    'toolbox': packageInformation.debug
   };
 
   module.exports = {
